@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover the perfect movie for you, find session times, and book tickets at VOX Cinemas.">
+    <title>VOX Cinema</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body { background-color: black }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                <li><a href="{{ url_for('payment') }}">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h2>
+        <p class="slog">See What's Next</p>
+    </h2>
+
+    <main>
+        <div class="container">
+            <p><h2>Top Movies</h2></p>
+            <div class="movies-grid">
+                {% for movie in movies %}
+                <div class="movies-card">
+                   <h3>{{ movie.name }}</h3>
+                   <img src="{{ url_for('static', filename='images/' + movie.image) }}" alt="{{ movie.name }}">
+                   <p>age {{ movie.age }}</p>
+                   <p class="price">Price: {{ movie.price }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 VOX Cinema. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
